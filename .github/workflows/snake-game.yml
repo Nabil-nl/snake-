@@ -27,6 +27,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add github-snake.svg github-snake-dark.svg ocean.gif
-          git diff-index --quiet HEAD || (git commit -m "Update generated snake game images" && git push)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for pushing changes
+          git commit -m "Update generated snake game images" || echo "No changes to commit"
+          git push
