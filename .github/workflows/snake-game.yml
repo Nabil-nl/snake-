@@ -18,13 +18,15 @@ jobs:
         with:
           github_user_name: Nabil-nl
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+            github-snake.svg
+            github-snake-dark.svg?palette=github-dark
+            ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
       - name: Commit and push generated images
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-          git add dist/*
+          git add github-snake.svg github-snake-dark.svg ocean.gif
           git diff-index --quiet HEAD || (git commit -m "Update generated snake game images" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for pushing changes
