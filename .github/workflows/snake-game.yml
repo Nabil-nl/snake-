@@ -2,8 +2,8 @@ name: Generate Snake Game
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight
-  workflow_dispatch:  # Allows manual triggering
+    - cron: '0 0 * * *'  
+  workflow_dispatch: 
 
 jobs:
   generate-snake-game:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.MY_SECRET }}  # Use your secret here
+          token: ${{ secrets.MY_SEC }}
 
       - name: Generate Snake Game from GitHub Contribution Grid
         uses: Platane/snk@v3
@@ -32,4 +32,4 @@ jobs:
           git commit -m "Update generated snake game images" || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_SECRET }}  # Use your secret here
+          GITHUB_TOKEN: ${{ secrets.MY_SEC }}
