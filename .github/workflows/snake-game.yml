@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_SECRET }}  # Use your secret here
 
       - name: Generate Snake Game from GitHub Contribution Grid
         uses: Platane/snk@v3
@@ -32,4 +32,4 @@ jobs:
           git commit -m "Update generated snake game images" || echo "No changes to commit"
           git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_SECRET }}  # Use your secret here
